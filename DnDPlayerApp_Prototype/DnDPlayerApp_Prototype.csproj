@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Interfaces\IAction.cs" />
+    <Compile Include="Interfaces\IAlignment.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IClass.cs" />
@@ -57,7 +58,9 @@
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Abstract\ACharacter.cs" />
     <Compile Include="Models\Abstract\ACube.cs" />
-    <Compile Include="Models\BaseCharacterModel.cs" />
+    <Compile Include="Models\Abstract\ARace.cs" />
+    <Compile Include="Models\BaseModules\BaseCharacterModel.cs" />
+    <Compile Include="Models\BaseModules\BaseRaseModule.cs" />
     <Compile Include="Models\Cubes\Cube_1d10.cs" />
     <Compile Include="Models\Cubes\Cube_1d100.cs" />
     <Compile Include="Models\Cubes\Cube_1d12.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Models\Cubes\Cube_1d6.cs" />
     <Compile Include="Models\Cubes\Cube_1d8.cs" />
     <Compile Include="Models\Emuns\enSkill.cs" />
+    <Compile Include="Models\Emuns\enStat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
