@@ -13,6 +13,7 @@
         int Speed { get; }
         IList<IWeapon> CombatTraining { get;}
 
+        void SetSubRace(IRace subRace);
         int GetAbilityScoreIncrease(Stat stat);
         int GetSkillScoreIncrease(Skill skill);
     }

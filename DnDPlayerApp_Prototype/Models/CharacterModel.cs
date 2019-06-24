@@ -6,7 +6,7 @@
     using DnDPlayerApp_Prototype.Models.Abstract;
     using DnDPlayerApp_Prototype.Models.Emuns;
 
-    public class BaseCharacterModel : ACharacter
+    public class CharacterModel : ACharacter
     {
         // ICharacter
         private IList<IArmor> _armors;
@@ -22,7 +22,6 @@
         private int _inspiration;
         private int _level;
         private int _proficiencyBonus;
-        private int _speed;
         private int _temporaryHitPoints;
 
         // IStats
@@ -36,7 +35,7 @@
         // ISkills
         private IList<Skill> _selectedSkills;
 
-        protected BaseCharacterModel()
+        public CharacterModel()
         {
             // ICharacter
             _armors = new List<IArmor>();
@@ -52,7 +51,6 @@
             _level = 1;
             _name = "New Player";
             _proficiencyBonus = 0;
-            _speed = 0;
             _temporaryHitPoints = 0;
 
             // IStats
@@ -122,6 +120,16 @@
             return _race;
         }
 
+        public void SetRace(IRace race)
+        {
+            _race = race;
+        }
+
+        public void SetSubRace(IRace subRace)
+        {
+            _race.SetSubRace(subRace);
+        }
+
         protected override int getCurrentExp()
         {
             return _crrentExp;
@@ -164,7 +172,7 @@
 
         protected override int getSpeed()
         {
-            return _speed;
+            return _race.Speed;
         }
 
         protected override int getTemporaryHitPoints()
@@ -176,7 +184,7 @@
         #region IStats
         protected override int getCharisma()
         {
-            return _charisma;
+            return _charisma + _race.GetAbilityScoreIncrease(Stat.Charisma);
         }
 
         public void SetCharisma(int vale)
@@ -186,7 +194,7 @@
 
         protected override int getConstitution()
         {
-            return _constitution;
+            return _constitution + _race.GetAbilityScoreIncrease(Stat.Constitution);
         }
 
         public void SetConstitution(int value)
@@ -196,7 +204,7 @@
 
         protected override int getDexterity()
         {
-            return _dexterity;
+            return _dexterity + _race.GetAbilityScoreIncrease(Stat.Dexterity);
         }
 
         public void SetDexterity(int value)
@@ -206,7 +214,7 @@
 
         protected override int getIntelligence()
         {
-            return _intelligence;
+            return _intelligence + _race.GetAbilityScoreIncrease(Stat.Intelligence);
         }
 
         public void SetIntelligence(int value)
@@ -216,7 +224,7 @@
 
         protected override int getStrenght()
         {
-            return _strenght;
+            return _strenght + _race.GetAbilityScoreIncrease(Stat.Strenght);
         }
 
         public void SetStrenght(int value)
@@ -226,7 +234,7 @@
 
         protected override int getWisdom()
         {
-            return _wisdom;
+            return _wisdom + _race.GetAbilityScoreIncrease(Stat.Wisdom);
         }
 
         public void SetWisdom(int value)

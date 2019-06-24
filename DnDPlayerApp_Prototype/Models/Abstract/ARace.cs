@@ -27,5 +27,10 @@
 
         public abstract int GetSkillScoreIncrease(Skill skill);
         public abstract int GetAbilityScoreIncrease(Stat stat);
+
+        public void SetSubRace(IRace subRace)
+        {
+            _subRace = subRace;
+        }
     }
 }

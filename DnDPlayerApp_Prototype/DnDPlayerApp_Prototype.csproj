@@ -59,7 +59,7 @@
     <Compile Include="Models\Abstract\ACharacter.cs" />
     <Compile Include="Models\Abstract\ACube.cs" />
     <Compile Include="Models\Abstract\ARace.cs" />
-    <Compile Include="Models\BaseModules\BaseCharacterModel.cs" />
+    <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Models\BaseModules\BaseRaseModule.cs" />
     <Compile Include="Models\Cubes\Cube_1d10.cs" />
     <Compile Include="Models\Cubes\Cube_1d100.cs" />
@@ -70,6 +70,8 @@
     <Compile Include="Models\Cubes\Cube_1d8.cs" />
     <Compile Include="Models\Emuns\enSkill.cs" />
     <Compile Include="Models\Emuns\enStat.cs" />
+    <Compile Include="Models\СoncreteModels\Races\Dwarf.cs" />
+    <Compile Include="Models\СoncreteModels\SubRaces\MountainDwarf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

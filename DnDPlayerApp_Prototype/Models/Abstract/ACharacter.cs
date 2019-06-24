@@ -4,7 +4,7 @@
     using DnDPlayerApp_Prototype.Interfaces;
     using DnDPlayerApp_Prototype.Models.Emuns;
 
-    public abstract class ACharacter : ICharacter, IStats, IClass, IRace, ISkills
+    public abstract class ACharacter : ICharacter, IStats, IClass, ISkills
     {
         #region ICharacter
         public int Perception => getPerception();
