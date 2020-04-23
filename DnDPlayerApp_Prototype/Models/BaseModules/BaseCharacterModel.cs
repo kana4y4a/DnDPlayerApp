@@ -6,7 +6,7 @@
     using DnDPlayerApp_Prototype.Models.Abstract;
     using DnDPlayerApp_Prototype.Models.Emuns;
 
-    public class CharacterModel : ACharacter
+    public class BaseCharacterModel : ACharacter
     {
         // ICharacter
         private IList<IArmor> _armors;
@@ -35,7 +35,7 @@
         // ISkills
         private IList<Skill> _selectedSkills;
 
-        public CharacterModel()
+        public BaseCharacterModel()
         {
             // ICharacter
             _armors = new List<IArmor>();
@@ -67,7 +67,7 @@
 
         #region ICharacter
         #region Armor
-        protected override IList<IArmor> getArmors()
+        protected override IEnumerable<IArmor> getArmors()
         {
             return _armors;
         }
@@ -84,7 +84,7 @@
         #endregion
 
         #region Weapon
-        protected override IList<IWeapon> getWeapons()
+        protected override IEnumerable<IWeapon> getWeapons()
         {
             return _weapons;
         }

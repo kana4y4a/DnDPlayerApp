@@ -11,7 +11,7 @@
         protected IAlignment _alignment;
         protected int _size;
         protected int _speed;
-        protected IList<IWeapon> _combatTraining;
+        protected IEnumerable<IWeapon> _combatTraining;
 
         public IRace SubRace => _subRace;
 
@@ -23,9 +23,10 @@
 
         public int Speed => _speed;
 
-        public IList<IWeapon> CombatTraining => _combatTraining;
+        public IEnumerable<IWeapon> CombatTraining => _combatTraining;
 
         public abstract int GetSkillScoreIncrease(Skill skill);
+
         public abstract int GetAbilityScoreIncrease(Stat stat);
 
         public void SetSubRace(IRace subRace)

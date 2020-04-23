@@ -2,6 +2,6 @@
 {
     public interface IThrowable
     {
-        int Trow();
+         int Trow();
     }
 }

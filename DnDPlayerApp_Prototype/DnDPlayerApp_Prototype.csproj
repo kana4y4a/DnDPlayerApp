@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\Tables.cs" />
     <Compile Include="Interfaces\IAction.cs" />
     <Compile Include="Interfaces\IAlignment.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Interfaces\IClass.cs" />
     <Compile Include="Interfaces\IComponent.cs" />
     <Compile Include="Interfaces\ICube.cs" />
+    <Compile Include="Interfaces\IDamage.cs" />
     <Compile Include="Interfaces\IRace.cs" />
     <Compile Include="Interfaces\ISkills.cs" />
     <Compile Include="Interfaces\ISpell.cs" />
@@ -59,7 +61,7 @@
     <Compile Include="Models\Abstract\ACharacter.cs" />
     <Compile Include="Models\Abstract\ACube.cs" />
     <Compile Include="Models\Abstract\ARace.cs" />
-    <Compile Include="Models\CharacterModel.cs" />
+    <Compile Include="Models\BaseModules\BaseCharacterModel.cs" />
     <Compile Include="Models\BaseModules\BaseRaseModule.cs" />
     <Compile Include="Models\Cubes\Cube_1d10.cs" />
     <Compile Include="Models\Cubes\Cube_1d100.cs" />
@@ -68,12 +70,19 @@
     <Compile Include="Models\Cubes\Cube_1d4.cs" />
     <Compile Include="Models\Cubes\Cube_1d6.cs" />
     <Compile Include="Models\Cubes\Cube_1d8.cs" />
+    <Compile Include="Models\Emuns\enArmorType.cs" />
+    <Compile Include="Models\Emuns\enCastType.cs" />
+    <Compile Include="Models\Emuns\enDamageType.cs" />
+    <Compile Include="Models\Emuns\enRangeType.cs" />
     <Compile Include="Models\Emuns\enSkill.cs" />
+    <Compile Include="Models\Emuns\enSpellDurationType.cs" />
     <Compile Include="Models\Emuns\enStat.cs" />
+    <Compile Include="Models\Emuns\enWeaponType.cs" />
     <Compile Include="Models\СoncreteModels\Races\Dwarf.cs" />
     <Compile Include="Models\СoncreteModels\SubRaces\MountainDwarf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\CalssTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

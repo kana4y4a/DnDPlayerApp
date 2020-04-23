@@ -1,6 +1,5 @@
 ﻿namespace DnDPlayerApp_Prototype.Models.BaseModules
 {
-    using DnDPlayerApp_Prototype.Interfaces;
     using DnDPlayerApp_Prototype.Models.Abstract;
     using DnDPlayerApp_Prototype.Models.Emuns;
 

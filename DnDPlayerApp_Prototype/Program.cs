@@ -10,7 +10,7 @@
     {
         static void Main(string[] args)
         {
-            var c = new CharacterModel();
+            var c = new BaseCharacterModel();
             c.SetConstitution(new Cube_1d20().Trow());
             c.SetStrenght(new Cube_1d20().Trow());
             var dwarf = new Dwarf();

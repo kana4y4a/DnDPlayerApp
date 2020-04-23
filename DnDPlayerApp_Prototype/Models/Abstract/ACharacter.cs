@@ -34,11 +34,11 @@
         public bool[,] DeathSaves => getDeathSaves();
         protected abstract bool[,] getDeathSaves();
 
-        public IList<IWeapon> Weapons => getWeapons();
-        protected abstract IList<IWeapon> getWeapons();
+        public IEnumerable<IWeapon> Weapons => getWeapons();
+        protected abstract IEnumerable<IWeapon> getWeapons();
 
-        public IList<IArmor> Armors => getArmors();
-        protected abstract IList<IArmor> getArmors();
+        public IEnumerable<IArmor> Armors => getArmors();
+        protected abstract IEnumerable<IArmor> getArmors();
 
         public IClass CharacterClass => getCharacterClass();
         protected abstract IClass getCharacterClass();

@@ -10,11 +10,11 @@
             return (int)Math.Ceiling((value - 10.0) / 2);
         }
 
-        public static int TrowCube(ICube cube, byte times)
+        public static int TrowCubes(ICube cube, byte times = 1, byte bonus = 0)
         {
             var result = 0;
             for (int i = 0; i < times; ++i)
-                result += cube.Trow();
+                result += cube.Trow() + bonus;
             return result;
         }
     }
