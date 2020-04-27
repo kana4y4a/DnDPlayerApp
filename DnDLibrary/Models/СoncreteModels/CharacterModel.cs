@@ -1,16 +1,16 @@
-﻿namespace DnDLibrary.Models
+﻿namespace DnDLibrary.Models.СoncreteModels
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using DnDLibrary.Helpers;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Abstract;
     using DnDLibrary.Models.Emuns;
 
-    public class BaseCharacterModel : ACharacter
+    public class CharacterModel : ACharacter
     {
         // ICharacter
-        protected IList<IArmor> _armors;
-        protected IList<IWeapon> _weapons;
         protected int _perception;
         protected IClass _class;
         protected string _name;
@@ -35,11 +35,16 @@
         // ISkills
         protected IList<Skill> _selectedSkills;
 
-        protected BaseCharacterModel()
+        // IInventory
+        protected byte _usedSlots;
+        protected byte _maxSlots;
+        protected byte _usedBagSlots;
+        protected byte _maxBagSlots;
+        protected IList<IItem> _items;
+
+        public CharacterModel()
         {
             // ICharacter
-            _armors = new List<IArmor>();
-            _weapons = new List<IWeapon>();
             _perception = 0;
             _class = null;
             _race = null;
@@ -63,34 +68,41 @@
 
             // ISkills
             _selectedSkills = new List<Skill>();
+
+            // IInventory
+            _usedSlots = 0;
+            _maxSlots = 24;
+            _usedBagSlots = 1;
+            _maxBagSlots = 5;
+            _items = new List<IItem>();
         }
 
         #region ICharacter
         #region Armor
-        protected override IEnumerable<IArmor> getArmors() => _armors;
+        protected override IEnumerable<IArmor> getArmors() => getItemByType<IArmor>(ItemType.Armor);
 
         public void AddArmor(IArmor armor)
         {
-            _armors.Add(armor);
+            _items.Add(armor);
         }
 
-        public void RemoveArmor(int index)
+        public void RemoveArmor(UInt32 id)
         {
-            _armors.RemoveAt(index);
+            removeItemById(id);
         }
         #endregion
 
         #region Weapon
-        protected override IEnumerable<IWeapon> getWeapons() => _weapons;
+        protected override IEnumerable<IWeapon> getWeapons() => getItemByType<IWeapon>(ItemType.Weapon);
 
         public void AddWeapon(IWeapon weapon)
         {
-            _weapons.Add(weapon);
+            _items.Add(weapon);
         }
 
-        public void RemoveWeapon(int index)
+        public void RemoveWeapon(UInt32 id)
         {
-            _weapons.RemoveAt(index);
+            removeItemById(id);
         }
         #endregion
 
@@ -287,13 +299,23 @@
         }
         #endregion
 
+        #region IInventory
+        protected override byte getUsedSlots() => _usedSlots;
+
+        protected override byte getMaxSlots() => _maxSlots;
+
+        protected override byte getUsedBagSlots() => _usedBagSlots;
+
+        protected override byte getMaxBagSlots() => _maxBagSlots;
+
+        protected override IEnumerable<IItem> getItems() => _items;
+        #endregion
+
         #region Common
         public void AddSelectedSkill(Skill skill)
         {
             _selectedSkills.Add(skill);
         }
-
-        #endregion
 
         private int getSkillModification(Skill skill)
         {
@@ -339,5 +361,18 @@
             }
             return 0;
         }
+
+        private IEnumerable<I> getItemByType<I>(ItemType itemType)
+        {
+            return _items.Where(i => i.ItemType == itemType).Cast<I>();
+        }
+
+        private void removeItemById(UInt32 id)
+        {
+            var index = _items.IndexOf(_items.FirstOrDefault(i => i.Id == id));
+            if (-1 != index)
+                _items.RemoveAt(index);
+        }
+        #endregion
     }
 }

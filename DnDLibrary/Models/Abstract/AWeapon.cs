@@ -1,10 +1,17 @@
 ﻿namespace DnDLibrary.Models.Abstract
 {
-    using DnDLibrary.Interfaces;
     using System;
+    using DnDLibrary.Interfaces;
+    using DnDLibrary.Models.Emuns;
 
     public abstract class AWeapon : IWeapon
     {
+        public UInt32 Id => getId();
+        protected abstract UInt32 getId();
+
+        public byte Amount => getAmount();
+        protected abstract byte getAmount();
+
         public string Name => getName();
         protected abstract string getName();
 
@@ -25,6 +32,9 @@
 
         public UInt16 WeaponTypeMask => getWeaponTypeMask();
         protected abstract UInt16 getWeaponTypeMask();
+
+        public ItemType ItemType => getItemType();
+        protected abstract ItemType getItemType();
 
         public ICube DamageDice => getDamageDice();
         protected abstract ICube getDamageDice();

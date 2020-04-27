@@ -1,10 +1,17 @@
 ﻿namespace DnDLibrary.Models.Abstract
 {
+    using System;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Emuns;
 
     public abstract class AArmor : IArmor
     {
+        public UInt32 Id => getId();
+        protected abstract UInt32 getId();
+
+        public byte Amount => getAmount();
+        protected abstract byte getAmount();
+
         public string Name => getName();
         protected abstract string getName();
 
@@ -31,6 +38,9 @@
 
         public ArmorType ArmorType => getArmorType();
         protected abstract ArmorType getArmorType();
+
+        public ItemType ItemType => getItemType();
+        protected abstract ItemType getItemType();
 
     }
 }

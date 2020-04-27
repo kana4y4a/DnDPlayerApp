@@ -2,9 +2,8 @@
 {
     using System.Collections.Generic;
     using DnDLibrary.Interfaces;
-    using DnDLibrary.Models.Emuns;
 
-    public abstract class ACharacter : ICharacter, IStats, IClass, ISkills
+    public abstract class ACharacter : ICharacter, IStats, IClass, ISkills, IInventory
     {
         #region ICharacter
         public int Perception => getPerception();
@@ -130,6 +129,23 @@
 
         public int Survival => getSurvival();
         protected abstract int getSurvival();
+        #endregion
+
+        #region IInventory
+        public byte UsedSlots => getUsedSlots();
+        protected abstract byte getUsedSlots();
+
+        public byte MaxSlots => getMaxSlots();
+        protected abstract byte getMaxSlots();
+
+        public byte UsedBagSlots => getUsedBagSlots();
+        protected abstract byte getUsedBagSlots();
+
+        public byte MaxBagSlots => getMaxBagSlots();
+        protected abstract byte getMaxBagSlots();
+
+        public IEnumerable<IItem> Items => getItems();
+        protected abstract IEnumerable<IItem> getItems();
         #endregion
     }
 }

@@ -2,10 +2,8 @@
 {
     using DnDLibrary.Models.Emuns;
 
-    public interface IArmor
+    public interface IArmor : IItem
     {
-        string Name { get; }
-        string Description { get; }
         byte ArmorClass { get; }
         byte Weight { get; }
         bool StealthAffected { get; }

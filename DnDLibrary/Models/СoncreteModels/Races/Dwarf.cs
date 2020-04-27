@@ -3,7 +3,7 @@
     using DnDLibrary.Models.BaseModules;
     using DnDLibrary.Models.Emuns;
 
-    public class Dwarf : BaseRaseModule
+    public class Dwarf : BaseRaceModule
     {
         private int _constitutionBonus;
 

@@ -5,24 +5,30 @@
     using DnDLibrary.Interfaces;
     using System.Collections.Generic;
 
-    public class BaseRaseModule : ARace
+    public class BaseRaceModule : ARace
     {
-        protected IRace _subRace;
         protected int _age;
-        protected IAlignment _alignment;
         protected int _size;
         protected int _speed;
+        protected IRace _subRace;
+        protected IAlignment _alignment;
         protected IEnumerable<IWeapon> _combatTraining;
 
-        protected override IRace getSubRace() => _subRace;
         protected override int getAge() => _age;
-        protected override IAlignment getAlignment() => _alignment;
         protected override int getSize() => _size;
         protected override int getSpeed() => _speed;
+        protected override IRace getSubRace() => _subRace;
+        protected override IAlignment getAlignment() => _alignment;
         protected override IEnumerable<IWeapon> getCombatTraining() => _combatTraining;
 
-        protected BaseRaseModule()
+        protected BaseRaceModule()
         {
+            _age = 0;
+            _size = 0;
+            _speed = 0;
+            _subRace = null;
+            _alignment = null;
+            _combatTraining = new List<IWeapon>();
         }
 
         public override int GetSkillScoreIncrease(Skill skill)
@@ -55,7 +61,7 @@
 
         public override void SetSubRace(IRace subRace)
         {
-            throw new System.NotImplementedException();
+            _subRace = subRace;
         }
     }
 }

@@ -3,7 +3,7 @@
     using DnDLibrary.Models.BaseModules;
     using DnDLibrary.Models.Emuns;
 
-    public class MountainDwarf : BaseRaseModule
+    public class MountainDwarf : BaseRaceModule
     {
         private int _strenghtBonus;
 
@@ -14,7 +14,7 @@
 
         protected override int getRaceAbilityScoreIncrease(Stat stat)
         {
-            return stat == Stat.Strenght ? 2 : 0;
+            return stat == Stat.Strenght ? _strenghtBonus : 0;
         }
     }
 }

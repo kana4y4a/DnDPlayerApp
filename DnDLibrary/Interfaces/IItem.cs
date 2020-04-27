@@ -1,10 +1,15 @@
 ﻿namespace DnDLibrary.Interfaces
 {
-    public interface IComponent
+    using System;
+    using DnDLibrary.Models.Emuns;
+
+    public interface IItem
     {
-        int Id { get; }
+        UInt32 Id { get; }
         string Name { get; }
         string Description { get; }
         byte Amount { get; }
+
+        ItemType ItemType { get; }
     }
 }

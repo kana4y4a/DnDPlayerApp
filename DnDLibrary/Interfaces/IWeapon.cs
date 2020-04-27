@@ -2,10 +2,8 @@
 {
     using System;
 
-    public interface IWeapon
+    public interface IWeapon : IItem
     {
-        string Name { get; }
-        string Description { get; }
         int Price { get; }
         byte Weight { get; }
         int NormalTrowDistance { get; }

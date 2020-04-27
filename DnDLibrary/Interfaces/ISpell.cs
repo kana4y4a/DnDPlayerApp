@@ -14,7 +14,7 @@
         CastRangeType RangeType { get; }
         SpellDurationType DurationType { get; }
 
-        IEnumerable<IComponent> Components { get; }
+        IEnumerable<IItem> Components { get; }
         IAction Action { get; }
     }
 }
