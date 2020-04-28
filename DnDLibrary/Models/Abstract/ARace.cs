@@ -12,22 +12,24 @@
         public int Age => getAge();
         protected abstract int getAge();
 
-        public IAlignment Alignment => getAlignment();
-        protected abstract IAlignment getAlignment();
-
         public int Size => getSize();
         protected abstract int getSize();
 
         public int Speed => getSpeed();
         protected abstract int getSpeed();
 
+        public RaceType RaceType => getRaceType();
+        protected abstract RaceType getRaceType();
+
+        public IAlignment Alignment => getAlignment();
+        protected abstract IAlignment getAlignment();
+
         public IEnumerable<IWeapon> CombatTraining => getCombatTraining();
+
         protected abstract IEnumerable<IWeapon> getCombatTraining();
 
         public abstract int GetSkillScoreIncrease(Skill skill);
-
         public abstract int GetAbilityScoreIncrease(Stat stat);
-
         public abstract void SetSubRace(IRace subRace);
     }
 }

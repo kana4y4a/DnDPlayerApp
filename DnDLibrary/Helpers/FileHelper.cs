@@ -1,14 +1,14 @@
 ﻿namespace DnDLibrary.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Text.Json;
-    using DnDLibrary.Models.СoncreteModels;
     using System.IO;
     using System.Diagnostics;
+    using System.Text.Json.Serialization;
+
+    using DnDLibrary.Fabrics.Models;
+    using DnDLibrary.Models.СoncreteModels.Races;
+    using DnDLibrary.Interfaces;
 
     public static class FileHelper
     {
@@ -18,12 +18,14 @@
                 Directory.CreateDirectory(dirPath);
         }
 
-        internal static void SaveCharacter(CharacterModel chararcter, string filePath)
+        internal static void SaveCharacter(F_CharacterModel chararcter, string filePath)
         {
             var jsonString = string.Empty;
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
+            options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            options.Converters.Add(new ConcreteConverter<IRace>());
 
-            jsonString = JsonSerializer.Serialize(chararcter);
+            jsonString = JsonSerializer.Serialize(chararcter, options);
 
             try
             {
@@ -35,22 +37,40 @@
             }
         }
 
-        internal static CharacterModel LoadCharacter(string filePath)
+        internal static F_CharacterModel LoadCharacter(string filePath)
         {
             var jsonString = string.Empty;
-            var character = new CharacterModel();
+            var character = new F_CharacterModel();
             var options = new JsonSerializerOptions { IgnoreNullValues = false };
+            options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            options.Converters.Add(new ConcreteConverter<IRace>());
 
             jsonString = File.ReadAllText(filePath);
             try
             {
-                character = JsonSerializer.Deserialize<CharacterModel>(jsonString, options);
+                character = JsonSerializer.Deserialize<F_CharacterModel>(jsonString, options);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
             }
             return character;
+        }
+    }
+
+    internal class ConcreteConverter<T> : JsonConverter<T>
+    {
+        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            return default(T);
+        }
+
+        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+        {
+            if (value is IRace race)
+            {
+                writer.WriteStringValue(race.RaceType.ToString());
+            }
         }
     }
 }

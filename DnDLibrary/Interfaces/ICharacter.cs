@@ -19,7 +19,6 @@
         IClass CharacterClass { get; }
         IRace CharacterRace { get; }
 
-        bool[,] DeathSaves { get; }
         IEnumerable<IWeapon> Weapons { get; }
         IEnumerable<IArmor> Armors { get; }
     }

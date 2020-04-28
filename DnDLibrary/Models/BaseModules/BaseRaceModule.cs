@@ -10,6 +10,7 @@
         protected int _age;
         protected int _size;
         protected int _speed;
+        protected RaceType _raceType;
         protected IRace _subRace;
         protected IAlignment _alignment;
         protected IEnumerable<IWeapon> _combatTraining;
@@ -17,6 +18,7 @@
         protected override int getAge() => _age;
         protected override int getSize() => _size;
         protected override int getSpeed() => _speed;
+        protected override RaceType getRaceType() => _raceType;
         protected override IRace getSubRace() => _subRace;
         protected override IAlignment getAlignment() => _alignment;
         protected override IEnumerable<IWeapon> getCombatTraining() => _combatTraining;
@@ -26,6 +28,7 @@
             _age = 0;
             _size = 0;
             _speed = 0;
+            _raceType = RaceType.None;
             _subRace = null;
             _alignment = null;
             _combatTraining = new List<IWeapon>();

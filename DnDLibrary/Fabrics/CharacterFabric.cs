@@ -6,6 +6,7 @@
     using DnDLibrary.Helpers;
     using DnDLibrary.Models.СoncreteModels.Races;
     using DnDLibrary.Models.СoncreteModels.SubRaces;
+    using DnDLibrary.Fabrics.Models;
 
     public class CharacterFabric
     {
@@ -32,14 +33,26 @@
             return c;
         }
 
-        public CharacterModel LoadCharacter(string name)
-        {
-            return FileHelper.LoadCharacter(_rootStoragePath + CHARACTER_DATABASE + name);
-        }
-
         public void SaveCharacter(CharacterModel character)
         {
-            FileHelper.SaveCharacter(character, _rootStoragePath + CHARACTER_DATABASE + character.CharacterName);
+            var f_characterModule = new F_CharacterModel();
+            character.SetupFCharacter(f_characterModule);
+            FileHelper.SaveCharacter(f_characterModule, _rootStoragePath + CHARACTER_DATABASE + character.CharacterName);
+        }
+
+        public CharacterModel LoadCharacter(string name)
+        {
+            var f_character = new F_CharacterModel();
+            var character = new CharacterModel();
+
+            f_character = FileHelper.LoadCharacter(_rootStoragePath + CHARACTER_DATABASE + name);
+            setupCharacter(f_character, character);
+            return character;
+        }
+
+        private void setupCharacter(F_CharacterModel f_character, CharacterModel character)
+        {
+            character.SetupCharacter(f_character);
         }
 
         private void loadCharacterInventory(CharacterModel character)

@@ -9,6 +9,7 @@
 
         public Dwarf() : base()
         {
+            _raceType = RaceType.Dwarf;
             _constitutionBonus = 2;
         }
 

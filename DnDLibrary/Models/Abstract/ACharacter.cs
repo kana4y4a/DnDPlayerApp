@@ -30,9 +30,6 @@
         public ICube HitPointDice => getHitPointDice();
         protected abstract ICube getHitPointDice();
 
-        public bool[,] DeathSaves => getDeathSaves();
-        protected abstract bool[,] getDeathSaves();
-
         public IEnumerable<IWeapon> Weapons => getWeapons();
         protected abstract IEnumerable<IWeapon> getWeapons();
 

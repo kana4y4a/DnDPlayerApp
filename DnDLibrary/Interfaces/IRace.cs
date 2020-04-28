@@ -12,6 +12,8 @@
         int GetAbilityScoreIncrease(Stat stat);
         int GetSkillScoreIncrease(Skill skill);
 
+        RaceType RaceType { get; }
+
         IRace SubRace { get; }
         IAlignment Alignment { get; }
 

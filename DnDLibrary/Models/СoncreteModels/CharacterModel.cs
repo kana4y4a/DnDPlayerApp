@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using DnDLibrary.Fabrics.Models;
     using DnDLibrary.Helpers;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Abstract;
@@ -11,36 +12,35 @@
     public class CharacterModel : ACharacter
     {
         // ICharacter
-        protected int _perception;
-        protected IClass _class;
-        protected string _name;
-        protected IRace _race;
-        protected int _curentExp;
-        protected bool[,] _deathTrows;
-        protected ICube _hitPointDice;
-        protected int _hitPoints;
-        protected int _inspiration;
-        protected int _level;
-        protected int _proficiencyBonus;
-        protected int _temporaryHitPoints;
+        private int _perception;
+        private IClass _class;
+        private string _name;
+        private IRace _race;
+        private int _curentExp;
+        private ICube _hitPointDice;
+        private int _hitPoints;
+        private int _inspiration;
+        private int _level;
+        private int _proficiencyBonus;
+        private int _temporaryHitPoints;
 
         // IStats
-        protected int _charisma;
-        protected int _constitution;
-        protected int _dexterity;
-        protected int _intelligence;
-        protected int _strenght;
-        protected int _wisdom;
+        private int _charisma;
+        private int _constitution;
+        private int _dexterity;
+        private int _intelligence;
+        private int _strenght;
+        private int _wisdom;
 
         // ISkills
         protected IList<Skill> _selectedSkills;
 
         // IInventory
-        protected byte _usedSlots;
-        protected byte _maxSlots;
-        protected byte _usedBagSlots;
-        protected byte _maxBagSlots;
-        protected IList<IItem> _items;
+        private byte _usedSlots;
+        private byte _maxSlots;
+        private byte _usedBagSlots;
+        private byte _maxBagSlots;
+        private IList<IItem> _items;
 
         public CharacterModel()
         {
@@ -49,7 +49,6 @@
             _class = null;
             _race = null;
             _curentExp = 0;
-            _deathTrows = new bool[,] { { false, false, false }, { false, false, false } };
             _hitPointDice = null;
             _hitPoints = 0;
             _inspiration = 0;
@@ -125,8 +124,6 @@
         }
 
         protected override int getCurrentExp() => _curentExp;
-
-        protected override bool[,] getDeathSaves() => _deathTrows;
 
         protected override ICube getHitPointDice() => _hitPointDice;
 
@@ -312,6 +309,7 @@
         #endregion
 
         #region Common
+
         public void AddSelectedSkill(Skill skill)
         {
             _selectedSkills.Add(skill);
@@ -372,6 +370,75 @@
             var index = _items.IndexOf(_items.FirstOrDefault(i => i.Id == id));
             if (-1 != index)
                 _items.RemoveAt(index);
+        }
+
+        internal void SetupCharacter(F_CharacterModel f_characterModel)
+        {
+            // ICharacter
+            _perception = f_characterModel.F_Character.Perception;
+            _class = f_characterModel.F_Character.Class;
+            _race = f_characterModel.F_Character.GetRace();
+            _curentExp = f_characterModel.F_Character.CurrentExp;
+            _hitPointDice = f_characterModel.F_Character.HitPointDice;
+            _hitPoints = f_characterModel.F_Character.HitPoints;
+            _inspiration = f_characterModel.F_Character.Inspiration;
+            _level = f_characterModel.F_Character.Level;
+            _name = f_characterModel.F_Character.Name;
+            _proficiencyBonus = f_characterModel.F_Character.ProficiencyBonus;
+            _temporaryHitPoints = f_characterModel.F_Character.TemporaryHitPoints;
+
+            // IStats
+            _charisma = f_characterModel.F_Stats.Charisma;
+            _constitution = f_characterModel.F_Stats.Constitution;
+            _dexterity = f_characterModel.F_Stats.Dexterity;
+            _intelligence = f_characterModel.F_Stats.Intelligence;
+            _strenght = f_characterModel.F_Stats.Strenght;
+            _wisdom = f_characterModel.F_Stats.Wisdom;
+
+            // ISkills
+            _selectedSkills = new List<Skill>();
+
+            // IInventory
+            _usedSlots = f_characterModel.F_Inventory.UsedSlots;
+            _maxSlots = f_characterModel.F_Inventory.MaxSlots;
+            _usedBagSlots = f_characterModel.F_Inventory.UsedBagSlots;
+            _maxBagSlots = f_characterModel.F_Inventory.MaxBagSlots;
+            _items = new List<IItem>(f_characterModel.F_Inventory.Items);
+        }
+
+        internal void SetupFCharacter(F_CharacterModel f_characterModel)
+        {
+            // ICharacter
+            f_characterModel.F_Character.Perception = _perception;
+            f_characterModel.F_Character.Class = _class;
+            f_characterModel.F_Character.Race = _race.RaceType;
+            f_characterModel.F_Character.SubRace = _race.SubRace.RaceType;
+            f_characterModel.F_Character.CurrentExp = _curentExp;
+            f_characterModel.F_Character.HitPointDice = _hitPointDice;
+            f_characterModel.F_Character.HitPoints = _hitPoints;
+            f_characterModel.F_Character.Inspiration = _inspiration;
+            f_characterModel.F_Character.Level = _level;
+            f_characterModel.F_Character.Name = _name;
+            f_characterModel.F_Character.ProficiencyBonus = _proficiencyBonus;
+            f_characterModel.F_Character.TemporaryHitPoints = _temporaryHitPoints;
+
+            // IStats
+            f_characterModel.F_Stats.Charisma = _charisma;
+            f_characterModel.F_Stats.Constitution = _constitution;
+            f_characterModel.F_Stats.Dexterity = _dexterity;
+            f_characterModel.F_Stats.Intelligence = _intelligence;
+            f_characterModel.F_Stats.Strenght = _strenght;
+            f_characterModel.F_Stats.Wisdom = _wisdom;
+
+            // ISkills
+            f_characterModel.F_Skils.AddSelectedSkills(_selectedSkills);
+
+            // IInventory
+            f_characterModel.F_Inventory.UsedSlots = _usedSlots;
+            f_characterModel.F_Inventory.MaxSlots = _maxSlots;
+            f_characterModel.F_Inventory.UsedBagSlots = _usedBagSlots;
+            f_characterModel.F_Inventory.MaxBagSlots = _maxBagSlots;
+            f_characterModel.F_Inventory.Items = new List<IItem>(_items);
         }
         #endregion
     }

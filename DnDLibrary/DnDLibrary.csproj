@@ -91,6 +91,14 @@
   <ItemGroup>
     <Compile Include="Dictionaries\LanguageHelper.cs" />
     <Compile Include="Fabrics\CharacterFabric.cs" />
+    <Compile Include="Fabrics\Models\F_Character.cs" />
+    <Compile Include="Fabrics\Models\F_CharacterModel.cs" />
+    <Compile Include="Fabrics\Models\F_Class.cs" />
+    <Compile Include="Fabrics\Models\F_Inventory.cs" />
+    <Compile Include="Fabrics\Models\F_Skils.cs" />
+    <Compile Include="Fabrics\Models\F_Stats.cs" />
+    <Compile Include="Models\Abstract\AClass.cs" />
+    <Compile Include="Models\Emuns\enRaceType.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\Dictionaries.cs" />
@@ -136,6 +144,7 @@
     <Compile Include="Models\Emuns\enWeaponType.cs" />
     <Compile Include="Models\СoncreteModels\Armor\PaddedArmor.cs" />
     <Compile Include="Models\СoncreteModels\Races\Dwarf.cs" />
+    <Compile Include="Models\СoncreteModels\Races\SubStuff.cs" />
     <Compile Include="Models\СoncreteModels\SubRaces\MountainDwarf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\CalssTable.cs" />

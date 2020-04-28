@@ -9,6 +9,7 @@
 
         public MountainDwarf() : base()
         {
+            _raceType = RaceType.MountainDwarf;
             _strenghtBonus = 2;
         }
 
