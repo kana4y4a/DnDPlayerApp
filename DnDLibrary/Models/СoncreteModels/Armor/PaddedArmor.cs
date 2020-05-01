@@ -1,26 +1,26 @@
 ﻿namespace DnDLibrary.Models.СoncreteModels.Armor
 {
-    using System;
-    using DnDLibrary.Dictionaries;
+    using DnDLibrary.SystemDictionaries;
     using DnDLibrary.Models.Emuns;
     using DnDLibrary.Models.BaseModules;
+    using DnDLibrary.Helpers.Tables;
 
     public class PaddedArmor : BaseArmorModel
     {
-        public PaddedArmor(UInt32 id = 0) : base()
+        public PaddedArmor() : base()
         {
-            _id = id;
+            _id = 1;
             _amount = 1;
             _name = LanguageHelper.GetString(_id);
             _description = LanguageHelper.GetString(_id);
-            _armorClass = 11;
-            _weight = 8;
-            _stealthAffected = true;
-            _streingthRequire = 0;
-            _price = 5;
+
             _armorGroupType = ArmorGroupType.Light;
             _armorType = ArmorType.Padded;
-            _itemType = ItemType.Armor;
+
+            _price = (uint)(5u * CoinExchange.Table[(int)CoinsType.Gold].Coef_cp);
+            _armorClass = 11;
+            _stealthAffected = true;
+            _weight = 8.0f;
         }
     }
 }

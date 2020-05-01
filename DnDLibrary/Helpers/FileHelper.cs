@@ -18,12 +18,11 @@
                 Directory.CreateDirectory(dirPath);
         }
 
-        internal static void SaveCharacter(F_CharacterModel chararcter, string filePath)
+        internal static void SaveCharacter(CharacterDataModel chararcter, string filePath)
         {
             var jsonString = string.Empty;
             var options = new JsonSerializerOptions { IgnoreNullValues = true };
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-            options.Converters.Add(new ConcreteConverter<IRace>());
 
             jsonString = JsonSerializer.Serialize(chararcter, options);
 
@@ -37,40 +36,23 @@
             }
         }
 
-        internal static F_CharacterModel LoadCharacter(string filePath)
+        internal static CharacterDataModel LoadCharacter(string filePath)
         {
             var jsonString = string.Empty;
-            var character = new F_CharacterModel();
+            var character = new CharacterDataModel();
             var options = new JsonSerializerOptions { IgnoreNullValues = false };
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-            options.Converters.Add(new ConcreteConverter<IRace>());
 
             jsonString = File.ReadAllText(filePath);
             try
             {
-                character = JsonSerializer.Deserialize<F_CharacterModel>(jsonString, options);
+                character = JsonSerializer.Deserialize<CharacterDataModel>(jsonString, options);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
             }
             return character;
-        }
-    }
-
-    internal class ConcreteConverter<T> : JsonConverter<T>
-    {
-        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            return default(T);
-        }
-
-        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
-        {
-            if (value is IRace race)
-            {
-                writer.WriteStringValue(race.RaceType.ToString());
-            }
         }
     }
 }

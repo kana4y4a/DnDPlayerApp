@@ -1,14 +1,17 @@
 ﻿namespace DnDLibrary.Interfaces
 {
-    using System;
     using DnDLibrary.Models.Emuns;
 
     public interface IItem
     {
-        UInt32 Id { get; }
+        uint Id { get; }
         string Name { get; }
         string Description { get; }
         byte Amount { get; }
+        bool IsStashable { get; }
+        uint Price { get; }
+        float Weight { get; }
+
 
         ItemType ItemType { get; }
     }

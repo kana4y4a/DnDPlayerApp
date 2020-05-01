@@ -1,11 +1,11 @@
-﻿namespace DnDLibrary.Dictionaries
+﻿namespace DnDLibrary.Helpers.Dictionaries
 {
     using System.Collections.Generic;
     using DnDLibrary.Models.Emuns;
 
     public static class Dictionaries
     {
-        readonly static Dictionary<ArmorType, ArmorGroupType> D_ArmorType_ArmorGroupType = new Dictionary<ArmorType, ArmorGroupType>
+        readonly static IDictionary<ArmorType, ArmorGroupType> ArmorType_GroupeDictionary = new Dictionary<ArmorType, ArmorGroupType>
         {
             { ArmorType.Padded, ArmorGroupType.Light },
             { ArmorType.Leather, ArmorGroupType.Light },
@@ -28,7 +28,7 @@
         public static IEnumerable<ArmorType> GetArmorTypesByArmorGroup(ArmorGroupType armorGroup)
         {
             var returnList = new List<ArmorType>();
-            foreach (var item in D_ArmorType_ArmorGroupType)
+            foreach (var item in ArmorType_GroupeDictionary)
             {
                 if (item.Value == armorGroup)
                     returnList.Add(item.Key);
@@ -38,7 +38,7 @@
 
         public static ArmorGroupType GetArmorGroupTypeByArmorType(ArmorType armorType)
         {
-            return D_ArmorType_ArmorGroupType[armorType];
+            return ArmorType_GroupeDictionary[armorType];
         }
     }
 }

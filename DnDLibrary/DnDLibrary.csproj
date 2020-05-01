@@ -89,15 +89,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionaries\LanguageHelper.cs" />
+    <Compile Include="Models\Cubes\Cube_1d1.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\BreastplateArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\ChainMailArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\ChainShirtArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\HalfPlateArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\HideArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\LeatherArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\PlateArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\RingMailArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\ScaleMailArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\Shield.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\SplintArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Armor\StuddedLeatherArmor.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\BattleAxe.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Blowgun.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Club.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\CrossbowHand.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\CrossbowHeavy.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\CrossbowLight.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Dagger.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Dart.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Flail.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Glaive.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\GreatAxe.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\GreatClub.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\GreatSword.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Halberd.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\HandAxe.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Javelin.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Lance.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\LightHammer.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Longbow.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\LongSword.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Mace.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Maul.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Morningstar.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Net.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Pike.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\QuarterStaff.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Rapier.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Scimitar.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Shortbow.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\ShortSword.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Sickle.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Sling.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Spear.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Trident.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\UnarmedStrike.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\WarHammer.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\WarPick.cs" />
+    <Compile Include="Models\СoncreteModels\Weapon\Whip.cs" />
+    <Compile Include="SystemDictionaries\LanguageHelper.cs" />
     <Compile Include="Fabrics\CharacterFabric.cs" />
+    <Compile Include="Fabrics\Interfaces\IFabric.cs" />
     <Compile Include="Fabrics\Models\F_Character.cs" />
-    <Compile Include="Fabrics\Models\F_CharacterModel.cs" />
+    <Compile Include="Fabrics\Models\CharacterDataModel.cs" />
     <Compile Include="Fabrics\Models\F_Class.cs" />
     <Compile Include="Fabrics\Models\F_Inventory.cs" />
     <Compile Include="Fabrics\Models\F_Skils.cs" />
     <Compile Include="Fabrics\Models\F_Stats.cs" />
+    <Compile Include="Helpers\Tables\CoinExchange.cs" />
     <Compile Include="Models\Abstract\AClass.cs" />
+    <Compile Include="Models\Emuns\enCoinsType.cs" />
     <Compile Include="Models\Emuns\enRaceType.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\Helper.cs" />
@@ -147,7 +201,9 @@
     <Compile Include="Models\СoncreteModels\Races\SubStuff.cs" />
     <Compile Include="Models\СoncreteModels\SubRaces\MountainDwarf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\CalssTable.cs" />
+    <Compile Include="TablesAndDictionaries\ArmorDictionary.cs" />
+    <Compile Include="TablesAndDictionaries\CalssTable.cs" />
+    <Compile Include="TablesAndDictionaries\WeaponDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -155,7 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\" />
-    <Folder Include="Models\Virtual\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">

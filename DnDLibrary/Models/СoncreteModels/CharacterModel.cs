@@ -3,16 +3,17 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using DnDLibrary.Fabrics.Interfaces;
     using DnDLibrary.Fabrics.Models;
     using DnDLibrary.Helpers;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Abstract;
     using DnDLibrary.Models.Emuns;
 
-    public class CharacterModel : ACharacter
+    public class CharacterModel : ACharacter, IFabric
     {
         // ICharacter
-        private int _perception;
+        private int _passivePerception;
         private IClass _class;
         private string _name;
         private IRace _race;
@@ -33,7 +34,25 @@
         private int _wisdom;
 
         // ISkills
-        protected IList<Skill> _selectedSkills;
+        private IList<Skill> _selectedSkills;
+        private int _acrobatics;
+        private int _animalHandling;
+        private int _arcana;
+        private int _athletics;
+        private int _deception;
+        private int _history;
+        private int _insight;
+        private int _intimidation;
+        private int _investigation;
+        private int _medicine;
+        private int _nature;
+        private int _perception;
+        private int _performance;
+        private int _persuasion;
+        private int _religion;
+        private int _sleightOfHand;
+        private int _stealth;
+        private int _survival;
 
         // IInventory
         private byte _usedSlots;
@@ -45,7 +64,7 @@
         public CharacterModel()
         {
             // ICharacter
-            _perception = 0;
+            _passivePerception = 0;
             _class = null;
             _race = null;
             _curentExp = 0;
@@ -67,6 +86,24 @@
 
             // ISkills
             _selectedSkills = new List<Skill>();
+            _acrobatics = 0;
+            _animalHandling = 0;
+            _arcana = 0;
+            _athletics = 0;
+            _deception = 0;
+            _history = 0;
+            _insight = 0;
+            _intimidation = 0;
+            _investigation = 0;
+            _medicine = 0;
+            _nature = 0;
+            _perception = 0;
+            _performance = 0;
+            _persuasion = 0;
+            _religion = 0;
+            _sleightOfHand = 0;
+            _stealth = 0;
+            _survival = 0;
 
             // IInventory
             _usedSlots = 0;
@@ -85,7 +122,7 @@
             _items.Add(armor);
         }
 
-        public void RemoveArmor(UInt32 id)
+        public void RemoveArmor(uint id)
         {
             removeItemById(id);
         }
@@ -99,13 +136,13 @@
             _items.Add(weapon);
         }
 
-        public void RemoveWeapon(UInt32 id)
+        public void RemoveWeapon(uint id)
         {
             removeItemById(id);
         }
         #endregion
 
-        protected override int getPerception() => _perception;
+        protected override int getPassivePerception() => _passivePerception;
 
         protected override IClass getCharacterClass() => _class;
 
@@ -207,92 +244,92 @@
         #region ISkills
         protected override int getAcrobatics()
         {
-            return getSkillModification(Skill.Acrobatics);
+            return _acrobatics + getSkillModification(Skill.Acrobatics);
         }
 
         protected override int getAnimalHandling()
         {
-            return getSkillModification(Skill.AnimalHandling);
+            return _animalHandling + getSkillModification(Skill.AnimalHandling);
         }
 
         protected override int getArcana()
         {
-            return getSkillModification(Skill.Arcana);
+            return _arcana + getSkillModification(Skill.Arcana);
         }
 
         protected override int getAthletics()
         {
-            return getSkillModification(Skill.Athletics);
+            return _athletics + getSkillModification(Skill.Athletics);
         }
 
         protected override int getDeception()
         {
-            return getSkillModification(Skill.Deception);
+            return _deception + getSkillModification(Skill.Deception);
         }
 
         protected override int getHistory()
         {
-            return getSkillModification(Skill.History);
+            return _history + getSkillModification(Skill.History);
         }
 
         protected override int getInsight()
         {
-            return getSkillModification(Skill.Insight);
+            return _insight + getSkillModification(Skill.Insight);
         }
 
         protected override int getIntimidation()
         {
-            return getSkillModification(Skill.Intimidation);
+            return _intimidation + getSkillModification(Skill.Intimidation);
         }
 
         protected override int getInvestigation()
         {
-            return getSkillModification(Skill.Investigation);
+            return _investigation + getSkillModification(Skill.Investigation);
         }
 
         protected override int getMedicine()
         {
-            return getSkillModification(Skill.Medicine);
+            return _medicine + getSkillModification(Skill.Medicine);
         }
 
         protected override int getNature()
         {
-            return getSkillModification(Skill.Nature);
+            return _nature + getSkillModification(Skill.Nature);
         }
 
-        protected override int getPercrption()
+        protected override int getPerception()
         {
-            return getSkillModification(Skill.Percrption);
+            return _perception + getSkillModification(Skill.Percrption);
         }
 
         protected override int getPerformance()
         {
-            return getSkillModification(Skill.Performance);
+            return _performance + getSkillModification(Skill.Performance);
         }
 
         protected override int getPersuasion()
         {
-            return getSkillModification(Skill.Persuasion);
+            return _persuasion + getSkillModification(Skill.Persuasion);
         }
 
         protected override int getReligion()
         {
-            return getSkillModification(Skill.Religion);
+            return _religion + getSkillModification(Skill.Religion);
         }
 
         protected override int getSleightOfHand()
         {
-            return getSkillModification(Skill.SleightOfHand);
+            return _sleightOfHand + getSkillModification(Skill.SleightOfHand);
         }
 
         protected override int getStealth()
         {
-            return getSkillModification(Skill.Stealth);
+            return _stealth + getSkillModification(Skill.Stealth);
         }
 
         protected override int getSurvival()
         {
-            return getSkillModification(Skill.Survival);
+            return _survival + getSkillModification(Skill.Survival);
         }
         #endregion
 
@@ -365,51 +402,19 @@
             return _items.Where(i => i.ItemType == itemType).Cast<I>();
         }
 
-        private void removeItemById(UInt32 id)
+        private void removeItemById(uint id)
         {
             var index = _items.IndexOf(_items.FirstOrDefault(i => i.Id == id));
             if (-1 != index)
                 _items.RemoveAt(index);
         }
+        #endregion
 
-        internal void SetupCharacter(F_CharacterModel f_characterModel)
+        #region IFabric
+        public void SaveCharacterData(CharacterDataModel f_characterModel)
         {
             // ICharacter
-            _perception = f_characterModel.F_Character.Perception;
-            _class = f_characterModel.F_Character.Class;
-            _race = f_characterModel.F_Character.GetRace();
-            _curentExp = f_characterModel.F_Character.CurrentExp;
-            _hitPointDice = f_characterModel.F_Character.HitPointDice;
-            _hitPoints = f_characterModel.F_Character.HitPoints;
-            _inspiration = f_characterModel.F_Character.Inspiration;
-            _level = f_characterModel.F_Character.Level;
-            _name = f_characterModel.F_Character.Name;
-            _proficiencyBonus = f_characterModel.F_Character.ProficiencyBonus;
-            _temporaryHitPoints = f_characterModel.F_Character.TemporaryHitPoints;
-
-            // IStats
-            _charisma = f_characterModel.F_Stats.Charisma;
-            _constitution = f_characterModel.F_Stats.Constitution;
-            _dexterity = f_characterModel.F_Stats.Dexterity;
-            _intelligence = f_characterModel.F_Stats.Intelligence;
-            _strenght = f_characterModel.F_Stats.Strenght;
-            _wisdom = f_characterModel.F_Stats.Wisdom;
-
-            // ISkills
-            _selectedSkills = new List<Skill>();
-
-            // IInventory
-            _usedSlots = f_characterModel.F_Inventory.UsedSlots;
-            _maxSlots = f_characterModel.F_Inventory.MaxSlots;
-            _usedBagSlots = f_characterModel.F_Inventory.UsedBagSlots;
-            _maxBagSlots = f_characterModel.F_Inventory.MaxBagSlots;
-            _items = new List<IItem>(f_characterModel.F_Inventory.Items);
-        }
-
-        internal void SetupFCharacter(F_CharacterModel f_characterModel)
-        {
-            // ICharacter
-            f_characterModel.F_Character.Perception = _perception;
+            f_characterModel.F_Character.PassivePerception = _passivePerception;
             f_characterModel.F_Character.Class = _class;
             f_characterModel.F_Character.Race = _race.RaceType;
             f_characterModel.F_Character.SubRace = _race.SubRace.RaceType;
@@ -432,6 +437,24 @@
 
             // ISkills
             f_characterModel.F_Skils.AddSelectedSkills(_selectedSkills);
+            f_characterModel.F_Skils.Acrobatics = _acrobatics;
+            f_characterModel.F_Skils.AnimalHandling = _animalHandling;
+            f_characterModel.F_Skils.Arcana = _arcana;
+            f_characterModel.F_Skils.Athletics = _athletics;
+            f_characterModel.F_Skils.Deception = _deception;
+            f_characterModel.F_Skils.History = _history;
+            f_characterModel.F_Skils.Insight = _insight;
+            f_characterModel.F_Skils.Intimidation = _intimidation;
+            f_characterModel.F_Skils.Investigation = _investigation;
+            f_characterModel.F_Skils.Medicine = _medicine;
+            f_characterModel.F_Skils.Nature = _nature;
+            f_characterModel.F_Skils.Perception = _perception;
+            f_characterModel.F_Skils.Performance = _performance;
+            f_characterModel.F_Skils.Persuasion = _persuasion;
+            f_characterModel.F_Skils.Religion = _religion;
+            f_characterModel.F_Skils.SleightOfHand = _sleightOfHand;
+            f_characterModel.F_Skils.Stealth = _stealth;
+            f_characterModel.F_Skils.Survival = _survival;
 
             // IInventory
             f_characterModel.F_Inventory.UsedSlots = _usedSlots;
@@ -439,6 +462,58 @@
             f_characterModel.F_Inventory.UsedBagSlots = _usedBagSlots;
             f_characterModel.F_Inventory.MaxBagSlots = _maxBagSlots;
             f_characterModel.F_Inventory.Items = new List<IItem>(_items);
+        }
+
+        public void LoadCharacterData(CharacterDataModel f_characterModel)
+        {
+            // ICharacter
+            _passivePerception = f_characterModel.F_Character.PassivePerception;
+            _class = f_characterModel.F_Character.Class;
+            _race = f_characterModel.F_Character.GetRace();
+            _curentExp = f_characterModel.F_Character.CurrentExp;
+            _hitPointDice = f_characterModel.F_Character.HitPointDice;
+            _hitPoints = f_characterModel.F_Character.HitPoints;
+            _inspiration = f_characterModel.F_Character.Inspiration;
+            _level = f_characterModel.F_Character.Level;
+            _name = f_characterModel.F_Character.Name;
+            _proficiencyBonus = f_characterModel.F_Character.ProficiencyBonus;
+            _temporaryHitPoints = f_characterModel.F_Character.TemporaryHitPoints;
+
+            // IStats
+            _charisma = f_characterModel.F_Stats.Charisma;
+            _constitution = f_characterModel.F_Stats.Constitution;
+            _dexterity = f_characterModel.F_Stats.Dexterity;
+            _intelligence = f_characterModel.F_Stats.Intelligence;
+            _strenght = f_characterModel.F_Stats.Strenght;
+            _wisdom = f_characterModel.F_Stats.Wisdom;
+
+            // ISkills
+            _selectedSkills = new List<Skill>();
+            _acrobatics = f_characterModel.F_Skils.Acrobatics;
+            _animalHandling = f_characterModel.F_Skils.AnimalHandling;
+            _arcana = f_characterModel.F_Skils.Arcana;
+            _athletics = f_characterModel.F_Skils.Athletics;
+            _deception = f_characterModel.F_Skils.Deception;
+            _history = f_characterModel.F_Skils.History;
+            _insight = f_characterModel.F_Skils.Insight;
+            _intimidation = f_characterModel.F_Skils.Intimidation;
+            _investigation = f_characterModel.F_Skils.Investigation;
+            _medicine = f_characterModel.F_Skils.Medicine;
+            _nature = f_characterModel.F_Skils.Nature;
+            _perception = f_characterModel.F_Skils.Perception;
+            _performance = f_characterModel.F_Skils.Performance;
+            _persuasion = f_characterModel.F_Skils.Persuasion;
+            _religion = f_characterModel.F_Skils.Religion;
+            _sleightOfHand = f_characterModel.F_Skils.SleightOfHand;
+            _stealth = f_characterModel.F_Skils.Stealth;
+            _survival = f_characterModel.F_Skils.Survival;
+
+            // IInventory
+            _usedSlots = f_characterModel.F_Inventory.UsedSlots;
+            _maxSlots = f_characterModel.F_Inventory.MaxSlots;
+            _usedBagSlots = f_characterModel.F_Inventory.UsedBagSlots;
+            _maxBagSlots = f_characterModel.F_Inventory.MaxBagSlots;
+            _items = new List<IItem>(f_characterModel.F_Inventory.Items);
         }
         #endregion
     }

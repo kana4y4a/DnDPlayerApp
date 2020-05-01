@@ -4,6 +4,6 @@
 
     public class Cube_1d6 : ACube
     {
-        protected override int getMax() { return 6; }
+        protected override byte getMax() { return 6; }
     }
 }

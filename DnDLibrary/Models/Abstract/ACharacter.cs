@@ -6,8 +6,8 @@
     public abstract class ACharacter : ICharacter, IStats, IClass, ISkills, IInventory
     {
         #region ICharacter
-        public int Perception => getPerception();
-        protected abstract int getPerception();
+        public int PassivePerception => getPassivePerception();
+        protected abstract int getPassivePerception();
 
         public int Inspiration => getInspiration();
         protected abstract int getInspiration();
@@ -106,8 +106,8 @@
         public int Nature => getNature();
         protected abstract int getNature();
 
-        public int Percrption => getPercrption();
-        protected abstract int getPercrption();
+        public int Perception => getPerception();
+        protected abstract int getPerception();
 
         public int Performance => getPerformance();
         protected abstract int getPerformance();

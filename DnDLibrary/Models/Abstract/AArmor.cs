@@ -6,8 +6,8 @@
 
     public abstract class AArmor : IArmor
     {
-        public UInt32 Id => getId();
-        protected abstract UInt32 getId();
+        public uint Id => getId();
+        protected abstract uint getId();
 
         public byte Amount => getAmount();
         protected abstract byte getAmount();
@@ -21,8 +21,8 @@
         public byte ArmorClass => getArmorClass();
         protected abstract byte getArmorClass();
 
-        public byte Weight => getWeight();
-        protected abstract byte getWeight();
+        public float Weight => getWeight();
+        protected abstract float getWeight();
 
         public bool StealthAffected => getStealthAffected();
         protected abstract bool getStealthAffected();
@@ -30,8 +30,11 @@
         public byte StreingthRequire => getStreingthRequire();
         protected abstract byte getStreingthRequire();
 
-        public int Price => getPrice();
-        protected abstract int getPrice();
+        public uint Price => getPrice();
+        protected abstract uint getPrice();
+
+        public bool IsStashable => getIsStashable();
+        protected abstract bool getIsStashable();
 
         public ArmorGroupType ArmorGroupType => getArmorGroupType();
         protected abstract ArmorGroupType getArmorGroupType();
@@ -40,7 +43,7 @@
         protected abstract ArmorType getArmorType();
 
         public ItemType ItemType => getItemType();
-        protected abstract ItemType getItemType();
 
+        protected abstract ItemType getItemType();
     }
 }

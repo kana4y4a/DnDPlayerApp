@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    interface IInventory
+    public interface IInventory
     {
         byte UsedSlots { get; }
         byte MaxSlots { get; }

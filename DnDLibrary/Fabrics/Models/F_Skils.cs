@@ -5,33 +5,34 @@
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Emuns;
 
-    internal class F_Skils
+    public class F_Skils
     {
-        int Acrobatics { get; set; }
-        int AnimalHandling { get; set; }
-        int Arcana { get; set; }
-        int Athletics { get; set; }
-        int Deception { get; set; }
-        int History { get; set; }
-        int Insight { get; set; }
-        int Intimidation { get; set; }
-        int Investigation { get; set; }
-        int Medicine { get; set; }
-        int Nature { get; set; }
-        int Percrption { get; set; }
-        int Performance { get; set; }
-        int Persuasion { get; set; }
-        int Religion { get; set; }
-        int SleightOfHand { get; set; }
-        int Stealth { get; set; }
-        int Survival { get; set; }
-        IList<Skill> SelectedSkills { get; set; }
+        public int Acrobatics { get; set; }
+        public int AnimalHandling { get; set; }
+        public int Arcana { get; set; }
+        public int Athletics { get; set; }
+        public int Deception { get; set; }
+        public int History { get; set; }
+        public int Insight { get; set; }
+        public int Intimidation { get; set; }
+        public int Investigation { get; set; }
+        public int Medicine { get; set; }
+        public int Nature { get; set; }
+        public int Perception { get; set; }
+        public int Performance { get; set; }
+        public int Persuasion { get; set; }
+        public int Religion { get; set; }
+        public int SleightOfHand { get; set; }
+        public int Stealth { get; set; }
+        public int Survival { get; set; }
+        public IList<Skill> SelectedSkills { get; set; }
 
         public F_Skils()
         {
+            SelectedSkills = new List<Skill>();
         }
 
-        public F_Skils(ISkills skills)
+        internal F_Skils(ISkills skills) : base()
         {
             Setup(skills);
         }
@@ -49,7 +50,7 @@
             Investigation = skills.Investigation;
             Medicine = skills.Medicine;
             Nature = skills.Nature;
-            Percrption = skills.Percrption;
+            Perception = skills.Perception;
             Performance = skills.Performance;
             Persuasion = skills.Persuasion;
             Religion = skills.Religion;

@@ -4,7 +4,7 @@
 
     public interface ICharacter
     {
-        int Perception { get; }
+        int PassivePerception { get; }
         int Inspiration { get; }
         int ProficiencyBonus { get; }
         int Initiative { get; }

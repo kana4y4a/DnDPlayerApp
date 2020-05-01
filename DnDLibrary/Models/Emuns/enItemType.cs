@@ -5,6 +5,8 @@
         None,
         Armor,
         Weapon,
-        Component
+        Component,
+        Item,
+        Instrument
     }
 }

@@ -4,7 +4,7 @@ using DnDLibrary.Interfaces;
 
 namespace DnDLibrary.Fabrics.Models
 {
-    internal class F_Inventory
+    public class F_Inventory
     {
         public byte UsedSlots { get; set; }
         public byte MaxSlots { get; set; }
@@ -14,14 +14,15 @@ namespace DnDLibrary.Fabrics.Models
 
         public F_Inventory()
         {
+            Items = new List<IItem>();
         }
 
-        public F_Inventory(IInventory inventory)
+        internal F_Inventory(IInventory inventory)
         {
             Setup(inventory);
         }
 
-        public void Setup(IInventory inventory)
+        internal void Setup(IInventory inventory)
         {
             UsedSlots = inventory.UsedSlots;
             MaxSlots = inventory.MaxSlots;

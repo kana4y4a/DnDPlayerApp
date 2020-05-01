@@ -1,16 +1,15 @@
 ﻿namespace DnDLibrary.Fabrics.Models
 {
     using System.Collections.Generic;
-    using System.Text.Json.Serialization;
     using DnDLibrary.Helpers;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Emuns;
     using DnDLibrary.Models.СoncreteModels.Races;
     using DnDLibrary.Models.СoncreteModels.SubRaces;
 
-    internal class F_Character
+    public class F_Character
     {
-        public int Perception { get; set; }
+        public int PassivePerception { get; set; }
         public int Inspiration { get; set; }
         public int ProficiencyBonus { get; set; }
         public int Initiative { get; set; }
@@ -31,14 +30,14 @@
         {
         }
 
-        public F_Character(ICharacter character)
+        internal F_Character(ICharacter character)
         {
             Setup(character);
         }
 
-        public void Setup(ICharacter character)
+        internal void Setup(ICharacter character)
         {
-            Perception = character.Perception;
+            PassivePerception = character.PassivePerception;
             Inspiration = character.Inspiration;
             ProficiencyBonus = character.ProficiencyBonus;
             Initiative = character.Initiative;
@@ -56,77 +55,17 @@
             Armors = character.Armors;
         }
 
-        public IRace GetRace()
+        internal IRace GetRace()
         {
-            IRace race;
-            switch (Race)
-            {
-                case RaceType.None:
-                    return null;
-                case RaceType.Dwarf:
-                    race = new Dwarf();
-                    break; 
-                //case RaceType.Elf:
-                //    race = new Elf();
-                //    break;
-                //case RaceType.Halfling:
-                //    race = new Halfling();
-                //    break;
-                //case RaceType.Human:
-                //    race = new Human();
-                //    break;
-                //case RaceType.Dragonborn:
-                //    race = new Dragonborn();
-                //    break;
-                //case RaceType.Gnome:
-                //    race = new Gnome();
-                //    break;
-                //case RaceType.HalfElf:
-                //    race = new HalfElf();
-                //    break;
-                //case RaceType.HalfOrk:
-                //    race = new HalfOrk();
-                //    break;
-                //case RaceType.Tiefling:
-                //    race = new Tiefling();
-                //    break;
-                default:
-                    return null;
-            }
-            setSubrace(race);
+            var race = Helper.GetRaceByType(Race);
+            if (null != race)
+                setSubrace(race);
             return race;
         }
 
         private void setSubrace(IRace race)
         {
-            switch (SubRace)
-            {
-                case RaceType.None:
-                    break;
-                //case RaceType.HillDwarf:
-                //    race.SetSubRace(new HillDwarf());
-                //    break;
-                case RaceType.MountainDwarf:
-                    race.SetSubRace(new MountainDwarf());
-                    break;
-                //case RaceType.HighElf:
-                //    race.SetSubRace(new HighElf());
-                //    break;
-                //case RaceType.WoodElf:
-                //    race.SetSubRace(new WoodElf());
-                //    break;
-                //case RaceType.DarkElf:
-                //    race.SetSubRace(new DarkElf());
-                //    break;
-                //case RaceType.ForestGnome:
-                //    race.SetSubRace(new ForestGnome());
-                //    break;
-                //case RaceType.RockGnome:
-                //    race.SetSubRace(new RockGnome());
-                //    break;
-                default:
-                    break;
-            }
+            race.SetSubRace(Helper.GetSubRaceByType(SubRace));
         }
     }
 }

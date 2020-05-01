@@ -13,7 +13,7 @@
         int Investigation { get; }
         int Medicine { get; }
         int Nature { get; }
-        int Percrption { get; }
+        int Perception { get; }
         int Performance { get; }
         int Persuasion { get; }
         int Religion { get; }

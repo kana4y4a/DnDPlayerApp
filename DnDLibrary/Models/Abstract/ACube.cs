@@ -5,14 +5,14 @@
 
     public abstract class ACube : ICube
     {
-        public int Min => 1;
+        public byte Min => 1;
 
-        public int Max => getMax();
-        protected abstract int getMax();
+        public byte Max => getMax();
+        protected abstract byte getMax();
 
-        public int Trow()
+        public byte Trow()
         {
-            return new Random().Next(Min, Max);
+            return Min != Max ? (byte)(new Random().Next(Min, Max)) : Max;
         }
 
         public override string ToString()

@@ -1,13 +1,12 @@
 ﻿namespace DnDLibrary.Models.Abstract
 {
-    using System;
     using DnDLibrary.Interfaces;
     using DnDLibrary.Models.Emuns;
 
     public abstract class AWeapon : IWeapon
     {
-        public UInt32 Id => getId();
-        protected abstract UInt32 getId();
+        public uint Id => getId();
+        protected abstract uint getId();
 
         public byte Amount => getAmount();
         protected abstract byte getAmount();
@@ -18,11 +17,11 @@
         public string Description => getDescription();
         protected abstract string getDescription();
 
-        public int Price => getPrice();
-        protected abstract int getPrice();
+        public uint Price => getPrice();
+        protected abstract uint getPrice();
 
-        public byte Weight => getWeight();
-        protected abstract byte getWeight();
+        public float Weight => getWeight();
+        protected abstract float getWeight();
 
         public int NormalTrowDistance => getNormalTrowDistance();
         protected abstract int getNormalTrowDistance();
@@ -30,13 +29,34 @@
         public int MaxThrowDistance => getMaxThrowDistance();
         protected abstract int getMaxThrowDistance();
 
-        public UInt16 WeaponTypeMask => getWeaponTypeMask();
-        protected abstract UInt16 getWeaponTypeMask();
+        public ushort WeaponAttributeMask => getWeaponAttributeMask();
+        protected abstract ushort getWeaponAttributeMask();
+
+        public bool IsStashable => getIsStashable();
+        protected abstract bool getIsStashable();
+
+        public byte DamageDiceMultiplier => getDamageDiceMultiplier();
+        protected abstract byte getDamageDiceMultiplier();
 
         public ItemType ItemType => getItemType();
         protected abstract ItemType getItemType();
 
+        public WeaponType WeaponType => getWeaponType();
+        protected abstract WeaponType getWeaponType();
+
+        public WeaponGroupType WeaponGroupType => getWeaponGroupType();
+        protected abstract WeaponGroupType getWeaponGroupType();
+
+        public DamageType DamageType => getDamageType();
+        protected abstract DamageType getDamageType();
+
+        public DamageGroupType DamageGroupType => getDamageGroupType();
+        protected abstract DamageGroupType getDamageGroupType();
+
         public ICube DamageDice => getDamageDice();
         protected abstract ICube getDamageDice();
+
+        public ICube VersatileDamageDice => getVersatileDamageDice();
+        protected abstract ICube getVersatileDamageDice();
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface ICube : IThrowable
     {
-        int Min { get; }
-        int Max { get; }
+        byte Min { get; }
+        byte Max { get; }
     }
 }

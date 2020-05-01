@@ -2,7 +2,7 @@
 {
     using DnDLibrary.Interfaces;
 
-    internal class F_Stats
+    public class F_Stats
     {
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
@@ -15,12 +15,12 @@
         {
         }
 
-        public F_Stats(IStats stats)
+        internal F_Stats(IStats stats)
         {
             Setup(stats);
         }
 
-        public void Setup(IStats stats)
+        internal void Setup(IStats stats)
         {
             Strenght = stats.Strenght;
             Dexterity = stats.Dexterity;

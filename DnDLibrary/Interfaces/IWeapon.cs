@@ -1,16 +1,20 @@
 ﻿namespace DnDLibrary.Interfaces
 {
-    using System;
+    using DnDLibrary.Models.Emuns;
 
     public interface IWeapon : IItem
     {
-        int Price { get; }
-        byte Weight { get; }
+        byte DamageDiceMultiplier { get; }
         int NormalTrowDistance { get; }
         int MaxThrowDistance { get; }
-        
-        UInt16 WeaponTypeMask { get; }
+        ushort WeaponAttributeMask { get; }
+
+        WeaponType WeaponType { get; }
+        WeaponGroupType WeaponGroupType { get; }
+        DamageType DamageType { get; }
+        DamageGroupType DamageGroupType { get; }
 
         ICube DamageDice { get; }
+        ICube VersatileDamageDice { get; }
     }
 }

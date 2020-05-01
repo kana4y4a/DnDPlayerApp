@@ -1,6 +1,62 @@
 ﻿namespace DnDLibrary.Models.Emuns
 {
-    public enum WeaponGropType : System.UInt16
+    public enum WeaponType
+    {
+        None,
+        // Simple melee weapon
+        Club,
+        Dagger,
+        GreatClub,
+        HandAxe,
+        Javelin,
+        LightHammer,
+        Mace,
+        QuarterStaff,
+        Sickle,
+        Spear,
+        UnarmedStrike,
+        // Simple range weapon
+        CrossbowLight,
+        Dart,
+        Shortbow,
+        Sling,
+        // Martiral melee weapon
+        BattleAxe,
+        Flail,
+        Glaive,
+        GreatAxe,
+        GreatSword,
+        Halberd,
+        Lance,
+        LongSword,
+        Maul,
+        Morningstar,
+        Pike,
+        Rapier,
+        Scimitar,
+        ShortSword,
+        Trident,
+        WarPick,
+        WarHammer,
+        Whip,
+        // Martiral range weapon
+        Blowgun,
+        CrossbowHand,
+        CrossbowHeavy,
+        Longbow,
+        Net
+    }
+
+    public enum WeaponGroupType
+    {
+        None,
+        SimpleMeleeWeapon,
+        SimpleRangedWeapon,
+        MartialMeleeWeapon,
+        MartialRangedWeapon
+    }
+
+    public enum WeaponAttributeType : ushort
     {
         None = 0x0000,
         Ammunition = 0x0001,

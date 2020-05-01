@@ -1,10 +1,8 @@
 ﻿namespace DnDLibrary.Fabrics.Models
 {
-    using System;
-    using DnDLibrary.Interfaces;
     using DnDLibrary.Models.СoncreteModels;
 
-    internal class F_CharacterModel
+    public class CharacterDataModel
     {
         public F_Stats F_Stats { get; set; }
         public F_Character F_Character { get; set; }
@@ -12,7 +10,7 @@
         public F_Skils F_Skils { get; set; }
         public F_Inventory F_Inventory { get; set; }
 
-        public F_CharacterModel()
+        public CharacterDataModel()
         {
             F_Stats = new F_Stats();
             F_Character = new F_Character();
@@ -21,7 +19,7 @@
             F_Inventory = new F_Inventory();
         }
 
-        public F_CharacterModel(CharacterModel character) : base()
+        public CharacterDataModel(CharacterModel character) : base()
         {
             Setup(character);
         }

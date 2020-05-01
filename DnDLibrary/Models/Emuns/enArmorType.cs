@@ -1,14 +1,5 @@
 ﻿namespace DnDLibrary.Models.Emuns
 {
-    public enum ArmorGroupType
-    {
-        None,
-        Light,
-        Medium,
-        Heavy,
-        Shield
-    }
-
     public enum ArmorType
     {
         None,
@@ -28,6 +19,15 @@
         Splint,
         Plate,
         // Shield
+        Shield
+    }
+
+    public enum ArmorGroupType
+    {
+        None,
+        Light,
+        Medium,
+        Heavy,
         Shield
     }
 }
